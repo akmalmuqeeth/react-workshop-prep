@@ -5,7 +5,7 @@ var titleComponent = React.createClass({
 	render : function(){
 		return (
 			div(null,
-				h1(null, "This is my second component")
+				h1({style : {color : this.props.color}}, this.props.title)
 			)
 		)
 	}
@@ -18,9 +18,9 @@ var mainComponent = React.createClass({
 	render : function(){
 		return (
 			div(null,
-				React.createElement(titleComponent),
-				React.createElement(titleComponent),
-				titleFactory(null)
+				titleFactory({title : 'something more than just components', color : 'peru'}),
+				titleFactory({title : 'title 2', color : 'mediumaquamarine'}),
+				titleFactory({title : 'message from the factory', color : 'red'})
 			)
 		)
 	}
