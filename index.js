@@ -11,11 +11,17 @@ var titleComponent = React.createClass({
 	}
 });
 
+var titleFactory = React.createFactory(titleComponent);
+
 
 var mainComponent = React.createClass({
 	render : function(){
 		return (
-			div(null, React.createElement(titleComponent), React.createElement(titleComponent), React.createElement(titleComponent))
+			div(null,
+				React.createElement(titleComponent),
+				React.createElement(titleComponent),
+				titleFactory(null)
+			)
 		)
 	}
 })
