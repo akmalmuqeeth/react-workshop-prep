@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import MyTitle from './MyTitle'
 
-var titleFactory = React.createFactory(MyTitle);
+var TitleFactory = React.createFactory(MyTitle);
 
 var div = React.DOM.div;
 
@@ -10,11 +10,11 @@ var div = React.DOM.div;
 var mainComponent = React.createClass({
 	render : function(){
 		return (
-			div(null,
-				titleFactory({title : 'something more than just components', color : 'peru'}),
-				titleFactory({title : 'title 2', color : 'mediumaquamarine'}),
-				titleFactory({title : 'message from the factory', color : 'red'})
-			)
+			<div>
+				<TitleFactory title="one" color="red"/>
+				<TitleFactory title="two" color="yellow"/>
+				<TitleFactory title="three" color="blue"/>
+			</div>
 		)
 	}
 })
