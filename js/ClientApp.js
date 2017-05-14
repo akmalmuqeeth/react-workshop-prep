@@ -9,7 +9,7 @@ const App = React.createClass({
 			<div className='app'>
 				<div className='landing'>
 					<h1>rVideo</h1>
-					<input type="text" placeholder="Search" />
+					<input type="text" placeholder="Search"/>
 					<a>or Browse All</a>
 				</div>
 			</div>
@@ -17,4 +17,4 @@ const App = React.createClass({
 	}
 })
 
-render(<App/>, document.getElementById('app'))
+render(<App />, document.getElementById('app'))
