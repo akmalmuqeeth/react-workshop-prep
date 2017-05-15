@@ -47,9 +47,18 @@ var CommentsBox = React.createClass({
 		}
 	},
 
+	handleSubmit : function(event){
+		event.preventDefault();
+		let newCommentText = this.comment.value;
+
+		let newComment = {title : 'Default comment' , author : 'New author' , date : 'April 25th 2017' , comment:newCommentText};
+
+		let newComments = this.state.comments.concat(newComment)
+
+		this.setState({comments: newComments});
+	},
 
 	render : function () {
-
 
 		let commentNodes = this.state.comments.map(function(comment){
 			return <Comment title={comment.title} author={comment.author} date={comment.date} comment={comment.comment}/>
@@ -59,6 +68,13 @@ var CommentsBox = React.createClass({
 		return (
 			<div>
 				<h3>Comments:</h3>
+				<div>
+					<h5>Add Comment</h5>
+					<form onSubmit={this.handleSubmit.bind(this)}>
+						<textarea ref={ (input) => {this.comment = input} } name="commenTextArea" id="commentText" cols="30" rows="10"></textarea>
+						<button type="submit">Add Comment</button>
+					</form>
+				</div>
 				<ul>
 					{commentNodes}
 				</ul>
