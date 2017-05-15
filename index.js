@@ -1,30 +1,71 @@
-var div = React.DOM.div;
-var h1 = React.DOM.h1;
 
-var titleComponent = React.createClass({
-	render : function(){
+var Comment = React.createClass({
+	render : function () {
 		return (
-			div(null,
-				h1({style : {color : this.props.color}}, this.props.title)
-			)
-		)
-	}
-});
-
-var titleFactory = React.createFactory(titleComponent);
-
-
-var mainComponent = React.createClass({
-	render : function(){
-		return (
-			div(null,
-				titleFactory({title : 'something more than just components', color : 'peru'}),
-				titleFactory({title : 'title 2', color : 'mediumaquamarine'}),
-				titleFactory({title : 'message from the factory', color : 'red'})
-			)
+			<li className="list-group-item">
+				<div className  ="row">
+					<div className  ="col-xs-2 col-md-1">
+						<img src="http://placehold.it/80" className  ="img-circle img-responsive" alt="" /></div>
+					<div className  ="col-xs-10 col-md-11">
+						<div>
+							<a href="http://www.jquery2dotnet.com/2013/10/google-style-login-page-desing-usign.html">
+								{this.props.title}</a>
+							<div className  ="mic-info">
+								By: <a href="#">Bhaumik Patel</a> on 2 Aug 2013
+							</div>
+						</div>
+						<div className  ="comment-text">
+							Awesome design
+						</div>
+						<div className  ="action">
+							<button type="button" className  ="btn btn-primary btn-xs" title="Edit">
+								<span className  ="glyphicon glyphicon-pencil"></span>
+							</button>
+							<button type="button" className  ="btn btn-success btn-xs" title="Approved">
+								<span className  ="glyphicon glyphicon-ok"></span>
+							</button>
+							<button type="button" className  ="btn btn-danger btn-xs" title="Delete">
+								<span className  ="glyphicon glyphicon-trash"></span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</li>
 		)
 	}
 })
 
-var mainCompElement = React.createElement(mainComponent);
-ReactDOM.render(mainCompElement, document.getElementById('app'))
+
+
+var CommentsBox = React.createClass({
+
+	getInitialState : function(){
+	    return {
+	    	comments : [
+				{title : 'First Comment'},
+				{title : 'Second Comment'}
+			]
+		}
+	},
+
+
+	render : function () {
+
+
+		let commentNodes = this.state.comments.map(function(comment){
+			return <Comment title={comment.title}/>
+		});
+
+
+		return (
+			<div>
+				<h3>Comments:</h3>
+				<ul>
+					{commentNodes}
+				</ul>
+			</div>
+		)
+	}
+})
+
+ReactDOM.render(<CommentsBox/>, document.getElementById('app'))
