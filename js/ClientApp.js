@@ -4,17 +4,17 @@ import '../public/normalize.css'
 import '../public/styles.css'
 
 const App = React.createClass({
-	render(){
-		return (
-			<div className='app'>
-				<div className='landing'>
-					<h1>rVideo</h1>
-					<input type="text" placeholder="Search"/>
-					<a>or Browse All</a>
-				</div>
-			</div>
-		)
-	}
+  render () {
+    return (
+      <div className='app'>
+		<div className='landing'>
+		  <h1>rVideo</h1>
+		  <input type='text' placeholder='Search' />
+		  <a>or Browse All</a>
+        </div>
+      </div>
+  )
+  }
 })
 
 render(<App />, document.getElementById('app'))
